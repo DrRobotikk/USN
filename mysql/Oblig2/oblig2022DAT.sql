@@ -1,0 +1,166 @@
+DROP SCHEMA IF EXISTS Bysykkelordning;
+CREATE SCHEMA IF NOT EXISTS Bysykkelordning;
+
+USE bysykkelordning;
+
+CREATE TABLE Sykkelstativ
+(
+StativID INT(3),
+Sted CHAR(40),
+CONSTRAINT StativIDPK PRIMARY KEY (StativID)
+);
+
+
+CREATE TABLE Kunde
+(
+Mobilnr CHAR (11),
+Fornavn CHAR(30),
+Etternavn CHAR (20),
+Betalingskortnr CHAR(16),
+CONSTRAINT MobilnrPK PRIMARY KEY (Mobilnr)
+);
+-- 3000 tilgjengelige sykler, 300 sykkelstativer og 6000 elektroniske låser (ca 20 pr sykkelstativ)
+CREATE TABLE Lås
+(
+StativID INT(3),
+Låsnr INT(4),
+CONSTRAINT StativIDLåsnrPK PRIMARY KEY (StativID,Låsnr),
+CONSTRAINT StativIDFK FOREIGN KEY (StativID) REFERENCES Sykkelstativ(StativID)
+);
+
+CREATE TABLE Sykkel
+(
+SykkelID INT(4),
+Startdato DATE,
+StativID INT(3),
+Låsnr INT(4),
+CONSTRAINT SykkelIDPK PRIMARY KEY (SykkelID),
+CONSTRAINT SykkelLåsFK FOREIGN KEY (StativID,Låsnr) REFERENCES Lås(StativID,Låsnr)
+);
+
+CREATE TABLE Utleie
+(
+SykkelID INT(4),
+-- utlevert må vi snakke om
+Utlevert TIMESTAMP,
+Mobilnr CHAR(11),
+-- innlevert må vi snakke om
+Innlevert TIMESTAMP NULL DEFAULT NULL,
+Beløp DECIMAL(5,2),
+CONSTRAINT SykkelIDUtlevertPK PRIMARY KEY (SykkelID,Utlevert),
+CONSTRAINT SykkelIDFK FOREIGN KEY (SykkelID) REFERENCES Sykkel(SykkelID),
+CONSTRAINT MobilnrFK FOREIGN KEY (Mobilnr) REFERENCES Kunde(Mobilnr)
+);
+
+
+INSERT INTO Kunde (Mobilnr, Fornavn, Etternavn, Betalingskortnr) VALUES 
+('+4748249971', 'Jakob', 'Aarre', "1492837293048174"),
+('+4790550950', 'Fredrik', 'Fossum', '7482194865329105'),
+('+4747590170', 'Kasper', 'Lura', '4536578671230496'),
+('+4789675684', 'Erlend', 'Grønnevik', '7465761213098907'),
+('+4745612383', 'Sigurd', 'Olsen', '7569878967543567'),
+('+4778065032', 'Mina', 'Olsen', '7451229865873270'),
+('+4774671895', 'Wenche', 'Lutsi', '1029384756758493'),
+('+4748171108', 'Aslaug', 'Aspervik', '2334078869447216'),
+('+4756188231', 'Nicolai', 'Langenes', '3607201080192064'),
+('+4772036010', 'Stian', 'Møller', '7684739199283040'),
+("+4798824156","Galena","Boone","367336134922770"),
+("+4796112993","Ebony","Pittman","6706854482771380"),
+("+4738655053","Troy","Fowler","4175001522287652"),
+("+4768362501","Basil","Vaughan","364138897272333"),
+("+4726661415","Buckminster","Carroll","5361834345626225"),
+("+4747511583","Fitzgerald","Woodard","348453475247750"),
+("+4753537262","Kellie","Bender","6333669735155648"),
+("+4795576816","Ignacia","Suarez","378986446679455"),
+("+4741552108","Faith","Le","6334447152122354"),
+("+4732837221","Giacomo","Boone","4929723783957");
+
+
+INSERT INTO Sykkelstativ (StativID, Sted) VALUES
+("1","Krokkleiva"),
+("2","Hønefoss"),
+("3","Storo"),
+("4","Trondheim"),
+("5","Heimdal"),
+("6","Stord"),
+("7","Jevnaker"),
+("8","Sandnes"),
+("9","Bamle"),
+("10","Oslo");
+
+
+INSERT INTO Lås(StativID, Låsnr) VALUES 
+(1,1),
+(1,2),
+(1,3),
+(1,4),
+(1,5),
+(2,1),
+(2,2),
+(2,3),
+(2,4),
+(2,5),
+(3,1),
+(3,2),
+(3,3),
+(3,4),
+(3,5),
+(4,1),
+(4,2),
+(4,3),
+(4,4),
+(4,5),
+(5,1),
+(5,2),
+(5,3),
+(5,4),
+(5,5);
+
+
+INSERT INTO Sykkel (SykkelID, Startdato, StativID, Låsnr) VALUES
+(100,"2017-02-01",NULL,NULL),
+(165,"2003-02-15",NULL,NULL),
+(298,"2018-01-12",2,1),
+(101,"1991-03-14",NULL,NULL),
+(195,"2017-11-25",NULL,NULL),
+(164,"2018-04-01",NULL,NULL),
+(247,"2021-08-08",NULL,NULL),
+(119,"2021-05-09",NULL,NULL),
+(281,"2022-04-17",NULL,NULL),
+(219,"2020-02-12",NULL,NULL),
+(206,"2021-12-07",3,1),
+(170,"2022-01-06",3,2),
+(190,"2022-06-25",3,3),
+(286,"2022-04-26",3,4),
+(272,"2020-12-10",NULL,NULL),
+(168,"2023-01-16",4,1),
+(161,"2023-01-15",4,2),
+(279,"2021-12-20",4,3),
+(252,"2022-11-12",4,4),
+(218,"2022-03-05",4,5),
+(295,"2021-12-02",5,1);
+
+
+INSERT INTO Utleie (SykkelID, Utlevert, Mobilnr, Innlevert, Beløp) VALUES
+(100,"2027-03-03 03:33:02","+4748249971",NULL,NULL),
+(165,"2022-06-27 21:07:05",'+4790550950',NULL,NULL),
+(272,"2020-08-10 08:50:09","+4747590170",NULL,NULL),
+(101,"2021-11-13 05:09:09","+4789675684",NULL,NULL),
+(195,"2021-04-02 13:22:55","+4778065032",NULL,NULL),
+(164,"2021-05-25 14:18:33","+4774671895",NULL,NULL),
+(247,"2021-12-08 05:28:45","+4796112993",NULL,NULL),
+(119,"2022-04-06 19:00:04","+4738655053",NULL,NULL),
+(281,"2023-03-07 02:19:55","+4768362501",NULL,NULL),
+(219,"2021-03-28 15:07:12","+4726661415",NULL,NULL),
+(298,"2022-07-15 01:51:36","+4748249971","2022-07-15 10:29:41",500.00),
+(164,"2021-07-21 19:40:29","+4748249971","2021-07-21 22:20:23",200.00),
+(281,"2021-05-11 03:37:13","+4748249971","2021-05-11 20:54:02",100.00),
+(100,"2020-08-29 21:29:05","+4747590170","2021-10-12 11:11:40",1.00),
+(101,"2017-01-03 04:04:32","+4747590170","2021-06-14 22:32:56",50.00),
+(100,"2022-08-08 04:44:14","+4726661415","2022-09-21 11:37:36",253.59),
+(100,"2023-01-27 23:48:22","+4726661415","2023-02-28 03:17:27",666.66),
+(100,"2024-08-12 02:35:15","+4726661415","2024-08-15 11:12:53",420.69),
+(195,"2022-04-20 02:54:23","+4796112993","2023-01-21 04:16:31",474.47),
+(164,"2021-05-24 23:01:47","+4768362501","2022-05-17 22:12:59",42.42),
+(164,"2023-05-24 23:01:47","+4768362501","2024-05-17 22:12:59",42.42),
+(164,"2024-05-24 23:01:47","+4768362501","2025-05-17 22:12:59",42.42);

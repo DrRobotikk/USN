@@ -1,0 +1,1 @@
+-- SELECT kategorier og GROUP BY kategorier må være de samme, eller så blir resultatet feil
