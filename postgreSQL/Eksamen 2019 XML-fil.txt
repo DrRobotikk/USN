@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BranchList>
+	<Branch>
+		<branchNo>B005</branchNO>
+		<Street>22 Deer Rd</Street>
+		<City>London</City>
+		<Postcode>SW1 4EH</Postcode>
+	</Branch>
+	ALTERNATIVT:
+	<Branch branchNo="B007">
+		<Street>16 Argyll St</Street>
+		<City>Aberdeen</City>
+		<Postcode>AB2 3SU</Postcode>
+	</Branch>
+	
+	<Branch>
+		<branchNo>B003</branchNO>
+		<Street>163 Main St</Street>
+		<City>Glasgow</City>
+		<Postcode>G11 9QX</Postcode>
+	</Branch>
+</BranchList>

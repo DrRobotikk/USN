@@ -1,0 +1,11 @@
+SELECT 
+	cities.name,
+	cities.location,
+	Weather.temp_low,
+	Weather.temp_high,
+	Weather.date
+FROM
+	public.Weather,
+	public.cities
+WHERE
+	cities.name=Weather.city;
