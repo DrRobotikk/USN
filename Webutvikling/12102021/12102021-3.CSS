@@ -1,0 +1,13 @@
+h1 {
+    color:red;
+    margin-left: 50px;
+}
+h2 {
+    color:burlywood;
+    margin-left: 75px;
+}
+
+p {
+    color:blue;
+    font-weight: bold;
+}

@@ -1,0 +1,180 @@
+.top_line{
+    border: 53px solid #2E4647;
+    background-color: #2E4647;
+    margin-left: -1%;
+    margin-right: -1%;
+    margin-top: -10px;
+    /* OK */    
+}   
+
+.logo{
+    margin-top: -54px;
+    /* OK */
+}
+
+.user_header{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+    color: #d79f62;
+    float: right;
+    position: relative; right: 32%;
+}
+
+.picture_paragraph{
+    color: white;
+    background-color: grey;
+    opacity: 75%;
+    width: 416px;
+    height: 295px;
+    position: absolute;
+    text-align: center;
+    display: none;
+    top: -8%;
+}
+.skill_pic{
+    width: 416px;
+    height: 295px;
+}
+.article1:hover .picture_paragraph{
+    display: block;
+}
+.article2:hover .picture_paragraph{
+    display: block;
+}
+.article3:hover .picture_paragraph{
+    display: block;
+}
+.article4:hover .picture_paragraph{
+    display: block;
+}
+
+.skilltext{
+    margin-top: -5px;
+}
+
+.article1{
+    color: #2E4647;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+    float: right;
+    position: absolute; top: 40%; left: 38%;  
+}
+
+.article2{
+    color: #2E4647;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+    float: right;
+    position: absolute; top: 40%; left:69%
+}
+
+.article3{
+    color: #2E4647;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+    float: right;
+    position: absolute; top: 96%; left: 38%;  
+}
+
+.article4{
+    color: #2E4647;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+    float: right;
+    position: absolute; top: 96%; left: 69%;
+}
+
+.article5{
+    color: #2E4647;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 32px;
+    float: right;
+    position: absolute; top: 40%; left: 98%;
+}
+
+.aside{
+    float: none;
+    border: 2px solid #2E4647;
+    width: 433px;
+    height: 604px;
+    margin-left: 20px;
+    margin-top: 80px;   
+}
+
+.profile_picture{
+    margin-left: 120px;
+    margin-top: 25px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;    
+}
+
+.user_name{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    margin-left: 150px;
+    color: #2E4647;  
+}
+
+.misc_left{
+   
+    font-family: 'Microsoft Yi Baiti';
+    font-size: 24px;
+    margin-left: 20px;
+    display: inline-block;
+    margin-top: 20px;    
+}
+
+.misc_right{
+    
+    font-family: 'Microsoft Yi Baiti';
+    font-size: 24px;
+    text-align: right;
+    margin-left: 16%;
+    
+    margin-top: 20px;
+    display: inline-block;    
+}
+
+.about{
+    font-family: 'Microsoft Yi Baiti';
+    font-size: 20px;
+    border: 2px solid #2E4647;
+    width: 433px;
+    height: 194px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.aside_line{
+    border: 1px solid #d79f62;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #d79f62 ;
+}
+
+
+.time_balance{
+    border: 2px solid #2E4647;
+    width: 433px;
+    height: 103px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.header_time{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: #2E4647;
+    margin-left: 110px;
+    text-align: left;
+    margin-top: -3px;
+}
+
+#header_about{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: #d79f62;
+    margin-left: 15px;
+}

@@ -1,0 +1,69 @@
+    body {
+        font: 12pt Verdana, Arial, Georgia, sans-serif;
+    }
+    header {
+        width: auto;
+    }		
+    .logo{
+        float: left;
+        margin-left: 20px;
+    }	
+    nav {
+        float:left;
+        margin: 55px 0px 0px 20px;
+        width: 400px;
+        background-color: #628794;
+        border: 1px solid black;
+    }
+    nav ul {
+        margin: 0px;
+        list-style: none;
+        display: inline;
+    }
+    nav li {
+        display: inline;
+        line-height: 1.8em;
+    }			
+    #nav ul li a:link, #nav ul li a:visited {
+        font-size: 10pt;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 7px 10px 7px 10px;
+        background-color: #628794;
+        color: #ffffff;
+    }
+    #nav ul li a:hover, #nav ul li a:active {
+        font-size: 10pt;
+        font-weight: bold;
+        text-decoration: none;
+        padding: px 10px 7px 10px;
+        background-color: #c6a648;
+        color: #000000;
+    }
+    section {
+        width: auto;
+        float: left;
+        clear: left;
+    }			
+    div.imageleft {
+        margin-left: 20px;
+        float:left;
+        clear: all;
+        text-align:center;
+        font-size:9px;
+        font-style:italic;					
+    }
+    div.imageright {
+        
+        float:right;
+        clear: all;
+        text-align:center;
+        font-size:9px;
+        font-style:italic;							
+    }
+    .first{
+        margin-left: 220px;
+    }
+    .second{
+        margin-right: 250px;
+    }

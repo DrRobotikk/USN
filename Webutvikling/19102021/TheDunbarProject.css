@@ -1,0 +1,37 @@
+body { font-family: Optima, sans-serif; margin: 0; padding: 0; background-color: silver; }
+#sitenav ol { padding: 0; margin: 0; display: inline; }
+#sitenav li { display: inline; padding-left: 1em;
+				margin-left: 1em; border-left: 1px solid black; }
+#sitenav li:first-child { padding-left: 0; border-left: none; margin-left: 0; }
+#sitenav li a { color: white; }
+#main { padding: 0 12em 2em 2em; position: relative; background-color: gray; }/*...*/
+#content { background-color: white; }
+#sidebar { position: absolute; width: 10em; right: 1em; top: 1em; }
+#sidebar h3 { color: white; background-color: black; }
+#sidebar ol { margin: 0 0 1em 0; background-color: white; border: 2px solid black; }
+footer { background-color: white; }/*....*/
+a:link { color: #055; }
+a:visited { color: #404; }
+header { text-align: center; background-color: white; }
+header h1, header h2 { margin: 0; }
+header h1 { color: black; font-size: 250%; }
+header h2 { color: black; font-weight: normal; font-style: italic; }
+#sitenav { color: white; background-color: #404; }
+#sitenav ol { font-size: 90%; text-align: center; }
+#sitenav li { margin-left: 1em; border-left: 1px solid #DD0; }
+#sitenav li a:link, #sitenav li a:visited { color: white; text-decoration: none; }
+#sitenav li a:hover { color: #DDDD00; }
+#main { background-color: #055; }
+#content { background-color: white; padding: 1em 5em; }
+#content h3 { margin-top: 0; }
+#content p { font-size: 90%; line-height: 1.4; }
+#sidebar h3 { font-size: 100%; color: white; margin: 0;
+				font-weight: normal; padding: 0.125em 0.25em; background-color: #404; }
+#sidebar ol { background-color: white; border: 2px solid #404;
+				border-top: 0; margin: 0 0 1em 0; padding: 0.125em 0.25em; }
+#sidebar li { font-size: 85%; display: block; padding: 0.125em 0; }
+#sidebar li a:link, #sidebar li a:visited { text-decoration: none; color: #055; }
+#sidebar li a:hover { color: #404; }
+footer { background-color: #404; color: white; padding: 0.5em 5em; }
+footer p { margin: 0em; font-size: 85%; }
+footer p a:link, footer p a:visited { color: #DDDD00; }

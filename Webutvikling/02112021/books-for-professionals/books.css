@@ -1,0 +1,15 @@
+.head{
+    color: red;
+    margin-left: 1%;
+}
+
+.par{
+    color: blue;
+    margin-left: 2%;
+}
+
+.table{
+    text-align: center;
+    background-color: white;
+    margin-left: 5%;
+}

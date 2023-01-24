@@ -1,0 +1,32 @@
+img {width:100%; height: auto; max-width:1920px;}
+			
+@media(min-width:400px){
+	#main{
+		-webkit-column-count: 2;
+		column-count: 2;
+		background-color: red;					
+	}
+	aside{
+		-webkit-column-break-before:always;
+		break-before: always; 
+		background-color: white;
+	}
+}
+			
+header { text-align: center; background-color: white; }
+header h1, header h2 { margin: 0; }
+header h1 { color: black; font-size: 250%; }
+header h2 { color: black; font-weight: normal; font-style: italic; }
+body { font-family: Optima, sans-serif; margin: 0; padding: 0; background-color: silver; }
+#sitenav ol { padding: 0; margin: 0; display: inline; }
+#sitenav li { display: inline; padding-left: 1em; margin-left: 1em; border-left: 1px solid black; }
+#sitenav li:first-child { padding-left: 0; border-left: none; margin-left: 0; }
+#sitenav li a { color: white; }
+#sitenav { color: white; background-color: #404; }
+#sitenav ol { font-size: 90%; text-align: center; }
+#sitenav li { margin-left: 1em; border-left: 1px solid #DD0; }
+#sitenav li a:link, #sitenav li a:visited { color: white; text-decoration: none; }
+#sitenav li a:hover { color: #DDDD00; }
+footer { color: white; padding: 0.5em 0.5em; }
+footer p { margin: 0em; font-size: 85%; }
+footer p a:link, footer p a:visited { color: #DDDD00; }
