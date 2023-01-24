@@ -1,0 +1,70 @@
+1000
+Roman
+Kollar
+Roman@kollar
+10/10/2001
+Mann
+Bach IT og IS
+11000
+Martin
+Kollar
+Martin@kollar
+10/10/2010
+Mann
+Bach IT og IS
+2000
+Robin
+Tangen
+Robin@tangen
+10/10/2002
+Mann
+Bach økadm
+9000
+Kari
+Villikke
+Kari@villikke
+10/10/2009
+Kvinne
+Bach økadm
+3000
+Mira
+Sara
+Mira@sara
+10/10/2003
+Kvinne
+Bach IT og IS
+7000
+Tore
+Tang
+Tore@tang
+10/10/2007
+Mann
+Bach økadm
+4000
+Marta
+Eskestrand
+Marta@eskestrand
+10/10/2004
+Kvinne
+Bach økadm
+5000
+Towe
+Hansen
+Towe@hansen
+10/10/2005
+Kvinne
+Bach økadm
+6000
+Mari
+Villig
+Mari@villig
+10/10/2006
+Kvinne
+Bach økadm
+8000
+Britt
+Ka
+Britt@ka
+10/10/2008
+Kvinne
+Bach økadm
