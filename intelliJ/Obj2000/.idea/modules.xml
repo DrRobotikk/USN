@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/F1_260822/F1_260822.iml" filepath="$PROJECT_DIR$/F1_260822/F1_260822.iml" />
+      <module fileurl="file://$PROJECT_DIR$/F3_090922/F3_090922.iml" filepath="$PROJECT_DIR$/F3_090922/F3_090922.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Obj2000.iml" filepath="$PROJECT_DIR$/Obj2000.iml" />
+    </modules>
+  </component>
+</project>
