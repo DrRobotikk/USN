@@ -13,15 +13,15 @@ public class Tower {
     }
 
     static int teller;
+
     public static void flytt(int n, char fraTower, char tilTower, char ekstraTower) {
         teller++;
         if (n == 1) { //Stop-case
             System.out.println("Flytt skive " + n + " fra " + fraTower + " til " + tilTower);
-        }
-        else {
-            flytt(n - 1, fraTower,ekstraTower,tilTower);
+        } else {
+            flytt(n - 1, fraTower, ekstraTower, tilTower);
             System.out.println("Flytt skive " + n + " fra " + fraTower + " til " + tilTower);
-            flytt(n-1, ekstraTower, tilTower, fraTower);
+            flytt(n - 1, ekstraTower, tilTower, fraTower);
         }
     }
 }
