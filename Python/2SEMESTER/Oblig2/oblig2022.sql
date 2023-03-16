@@ -60,8 +60,8 @@ INSERT INTO Student (Studentnr,Fornavn,Etternavn,Epost,Telefon) VALUES
 ('1006','Didrik','Sawkins','didrik@sawkins','66666666'),
 ('1007','Sander','Korneliussen','sander@korneliussen','77777777'),
 ('1008','Even','Nyhus','even@nyhus','88888888'),
-('1009','Sondre','Pedersen','sondre@pedersen','99999999'),
-('1010','Mats','Hauk','mats@hauk','10101010');
+('1010','Sondre','Pedersen','sondre@pedersen','99999999'),
+('1009','Mats','Hauk','mats@hauk','10101010');
 
 INSERT INTO Emne (Emnekode, Emnenavn, Studiepoeng) VALUES
 ('INF1000','Informasjonssystemer',7.5),
@@ -170,3 +170,7 @@ GRANT SELECT ON Eksamensresultat TO 'Eksamenssjef';
 GRANT INSERT ON Eksamensresultat TO 'Eksamenssjef';
 GRANT UPDATE ON Eksamensresultat TO 'Eksamenssjef';
 GRANT DELETE ON Eksamensresultat TO 'Eksamenssjef';
+
+
+select max(Studentnr)
+from Student;
