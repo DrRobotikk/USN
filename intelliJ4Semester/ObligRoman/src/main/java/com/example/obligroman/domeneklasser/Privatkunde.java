@@ -1,10 +1,10 @@
-package domeneklasser;
+package com.example.obligroman.domeneklasser;
 
 public class Privatkunde extends Kunde{
 
     private String butikk;
 
-    public Privatkunde(int kundenr, String kundenavn, String butikk) {
+    public Privatkunde(String kundenr, String kundenavn, String butikk) {
         super(kundenr, kundenavn);
         this.butikk = butikk;
     }
@@ -20,4 +20,8 @@ public class Privatkunde extends Kunde{
     public String toString() {
         return super.toString() + " Butikk: " + butikk;
     }
+    public String toFile() {return "P" +";" + super.getKundenr() + ";" + super.getKundenavn() + ";" + butikk;}
+
+
+
 }

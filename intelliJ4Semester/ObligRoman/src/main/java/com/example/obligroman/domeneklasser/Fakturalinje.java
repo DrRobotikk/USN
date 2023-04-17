@@ -1,26 +1,34 @@
-package domeneklasser;
+package com.example.obligroman.domeneklasser;
 
+//Definerer klassen Fakturalinje og legger til 5 variabler
 public class Fakturalinje {
 
-    private int varenr;
+    private String fakturanr;
+    private String varenr;
     private String varenavn;
     private int antall;
     private double rabatt;
     private double totalPris;
 
-    public Fakturalinje(int varenr, String varenavn, int antall, double rabatt, double totalPris) {
+    //Bruker parametrene for å initialisere variabler med samme navn
+    public Fakturalinje(String fakturanr, String varenr, String varenavn, int antall, double rabatt, double totalPris) {
+        this.fakturanr = fakturanr;
         this.varenr = varenr;
         this.varenavn = varenavn;
         this.antall = antall;
         this.rabatt = rabatt;
         this.totalPris = totalPris;
     }
+    //Definerer metoder for Fakturalinje klassen
+    public String getFakturanr() {return fakturanr;}
 
-    public int getVarenr() {
+    public void setFakturanr(String fakturanr) {this.fakturanr = fakturanr;}
+
+    public String getVarenr() {
         return varenr;
     }
 
-    public void setVarenr(int varenr) {
+    public void setVarenr(String varenr) {
         this.varenr = varenr;
     }
 
@@ -57,9 +65,11 @@ public class Fakturalinje {
     }
 
     @Override
+    //Definerer en toString metode med informasjon om fakturalinje
     public String toString() {
         return "Fakturalinje{" +
-                "varenr=" + varenr +
+                "fakturanr=" + fakturanr +
+                ", varenr=" + varenr +
                 ", varenavn='" + varenavn + '\'' +
                 ", antall=" + antall +
                 ", rabatt=" + rabatt +
@@ -68,6 +78,6 @@ public class Fakturalinje {
     }
 
     public String toFile() {
-        return varenr + ";" + varenavn + ";" + antall + ";" + rabatt + ";" + totalPris;
+        return fakturanr + ";" + varenr + ";" + varenavn + ";" + antall + ";" + rabatt + ";" + totalPris;
     }
 }
