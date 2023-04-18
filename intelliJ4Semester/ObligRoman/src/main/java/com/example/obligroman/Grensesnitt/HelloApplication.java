@@ -34,7 +34,6 @@ public class HelloApplication extends Application {
     MenuItem lagFakturaLinjeItem = new MenuItem("Ny fakturalinje");
     MenuItem visFakturaItem = new MenuItem("Vis faktura");
     MenuItem nyVareItem = new MenuItem("Ny vare");
-    MenuItem visVareItem = new MenuItem("Vis alle varer");
     Button lagreKnapp = new Button("Lagre");
     Button tilbake = new Button("Tilbake");
 
@@ -53,7 +52,7 @@ public class HelloApplication extends Application {
             //Lager menyene:
             kundeMeny.getItems().addAll(privatKundeItem, firmaKundeItem, kontaktItem);
             fakturaMeny.getItems().addAll(lagFakturaItem, lagFakturaLinjeItem, visFakturaItem);
-            vareMeny.getItems().addAll(nyVareItem, visVareItem);
+            vareMeny.getItems().addAll(nyVareItem);
             //Legger ItemMenyene til navbaren:
             menylinje.getMenus().addAll(kundeMeny, fakturaMeny, vareMeny);
             //Angir positionen til navbaren:
@@ -63,7 +62,6 @@ public class HelloApplication extends Application {
             privatKundeItem.setOnAction(e -> behandlerPrivatkundeItem());
             firmaKundeItem.setOnAction(e -> behandlerFirmakundeItem());
             nyVareItem.setOnAction(e -> behandlerNyVareItem());
-            visVareItem.setOnAction(e -> behandlerVisVareItem());
             lagFakturaItem.setOnAction(e -> behandlerLagFakturaItem());
             lagFakturaLinjeItem.setOnAction(e -> behandlerLagFakturaLinjeItem());
             kontaktItem.setOnAction(e -> behandlerKontaktItem());
@@ -132,7 +130,7 @@ public class HelloApplication extends Application {
         // Oppretter hbox for kundenr og kundenavn
         HBox row2 = new HBox(55, kundenavnLabel, kundenavn);
         HBox row3 = new HBox(10, kredittLabel, kundekreditt);
-        HBox row4 = new HBox(30, telefonnrLabel, kundetelefonnr);
+        HBox row4 = new HBox(32, telefonnrLabel, kundetelefonnr);
         row2.setAlignment(Pos.BASELINE_CENTER);
         row3.setAlignment(Pos.BASELINE_CENTER);
         row4.setAlignment(Pos.BASELINE_CENTER);
@@ -201,25 +199,11 @@ public class HelloApplication extends Application {
         primaryStage.setScene(nyVareScene);
     }
 
-    // Metode for å vise alle varer
-    public void behandlerVisVareItem() {
-        Label finnVareLabel = new Label("Alle vare");
-        finnVareLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        tilbake = new Button("Tilbake");
-        tilbake.setOnAction(e -> primaryStage.setScene(primaryScene));
-        BorderPane visVareP = new BorderPane();
-        visVareP.setTop(finnVareLabel);
-        visVareP.setBottom(tilbake);
-        BorderPane.setAlignment(tilbake, Pos.BOTTOM_RIGHT);
-        visVareScene = new Scene(visVareP, 600, 400);
-        primaryStage.setScene(visVareScene);
-    }
-
-
     // Håndterer registrering av faktura
     public void behandlerLagFakturaItem() {
         //Instansierer klasser:
         Label lagFakturaLabel = new Label("Lag faktura");
+        lagFakturaLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         Label kundenrlbl = new Label("Oppgi kundenr:");
         Label fakturadatoLable = new Label("Oppgi fakturadato (dd-MM-yyyy");
         Label forfallsdatoLabel = new Label("Oppgi forfallsdato (dd-MM-yyyy");
@@ -229,9 +213,15 @@ public class HelloApplication extends Application {
         Button opprett = new Button("Opprett faktura");
         tilbake = new Button("Tilbake");
         //Setter data inn i bokser og scener:
+        HBox row1 = new HBox(102, kundenrlbl, kundenr);
+        HBox row2 = new HBox(10, fakturadatoLable, fakturadato);
+        HBox row3 = new HBox(10, forfallsdatoLabel, forfallsdato);
+        row1.setAlignment(Pos.BASELINE_CENTER);
+        row2.setAlignment(Pos.BASELINE_CENTER);
+        row3.setAlignment(Pos.BASELINE_CENTER);
         VBox fakturaboks = new VBox();
-        fakturaboks.getChildren().addAll(kundenrlbl, kundenr, fakturadatoLable, fakturadato, forfallsdatoLabel, forfallsdato, opprett);
-        fakturaboks.setAlignment(Pos.TOP_LEFT);
+        fakturaboks.getChildren().addAll(row1, row2, row3);
+        fakturaboks.setAlignment(Pos.CENTER_LEFT);
         //Setter lamda funksjoner for knapper:
         tilbake.setOnAction(e -> primaryStage.setScene(primaryScene));
         opprett.setOnAction(e -> {
@@ -242,9 +232,11 @@ public class HelloApplication extends Application {
         });
         // Oppretter borderpane til å holde alle UI elementene
         BorderPane lagFakturaP = new BorderPane();
-        lagFakturaP.setCenter(lagFakturaLabel);
-        lagFakturaP.setTop(fakturaboks);
+        lagFakturaP.setTop(lagFakturaLabel);
+        lagFakturaP.setCenter(fakturaboks);
         lagFakturaP.setBottom(tilbake);
+        lagFakturaP.setRight(lagreKnapp);
+        BorderPane.setAlignment(lagreKnapp, Pos.BOTTOM_CENTER);
         BorderPane.setAlignment(tilbake, Pos.BOTTOM_RIGHT);
         // Lager scenen med borderpanen og setter den til primærscenen
         lagFakturaScene = new Scene(lagFakturaP, 600, 400);
@@ -276,9 +268,8 @@ public class HelloApplication extends Application {
         column5.setCellValueFactory(new PropertyValueFactory<Fakturalinje, Double>("totalPris"));
         fakturalinjer.getColumns().addAll(column1, column2, column3, column4, column5);
         //Setter data inn i bokser og scener:
-        HBox fakturaboks = new HBox();
-        fakturaboks.getChildren().addAll(fakturanrlbl, fakturanr, vis);
-        fakturaboks.setAlignment(Pos.TOP_LEFT);
+        HBox fakturaboks = new HBox(10, fakturanrlbl, fakturanr, vis);
+        fakturaboks.setAlignment(Pos.CENTER_LEFT);
         //Setter lamda funksjoner for knapper:
         tilbake.setOnAction(e -> primaryStage.setScene(primaryScene));
         vis.setOnAction(e -> fakturalinjer.setItems(kontroll.finnFakturalinje(fakturanr.getText())));
@@ -300,58 +291,96 @@ public class HelloApplication extends Application {
 
         Label lagFakturaLabel = new Label("Lag fakturalinje");
         lagFakturaLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        Label spacing = new Label(" ");
+        Label spacing2 = new Label(" ");
         tilbake = new Button("Tilbake");
         Button hent = new Button("Hent Kundeinfo");
-        Button lagre = new Button("Lagre");
+        lagreKnapp = new Button("Lagre");
         Label kundenrLabel = new Label("Oppgi Kundenr:");
         TextField kundenr = new TextField();
-        VBox innlesningsfelt = new VBox(kundenrLabel, kundenr, hent);
+        HBox row1 = new HBox(20, kundenrLabel, kundenr);
+        VBox innlesningsfelt = new VBox(lagFakturaLabel,spacing,row1,spacing2, hent);
         BorderPane lagFakturaP = new BorderPane();
         tilbake.setOnAction(e -> primaryStage.setScene(primaryScene));
         hent.setOnAction(e -> {
             if (kontroll.rabattKunde(kundenr.getText())) {
 
-                Label fakturanrLabel = new Label("Fakturanr:");
-                Label varenrLabel = new Label("Varenr:");
-                Label antallLabel = new Label("Antall:");
-                Label rabatLabel = new Label("Rabatt:");
-                TextField fakturanr = new TextField();
-                TextField varenr = new TextField();
-                TextField antall = new TextField();
-                TextField rabatt = new TextField();
-                HBox fakturaBox = new HBox(10, fakturanrLabel,fakturanr);
-                HBox varenrBox = new HBox(10, varenrLabel, varenr);
-                HBox antallBox = new HBox(10, antallLabel, antall);
-                HBox rabattBox = new HBox(10, rabatLabel, rabatt);
-                VBox fakturalinje = new VBox(fakturaBox,varenrBox, antallBox, rabattBox, lagre);
-                lagre.setOnAction(x -> kontroll.nyFakturalinje(fakturanr.getText(),varenr.getText(),antall.getText(),rabatt.getText()));
-                lagFakturaP.setCenter(fakturalinje);
+                genererForFirma(lagFakturaP,lagreKnapp);
 
             } else {
-                Label fakturanrLabel = new Label("Fakturanr:");
-                Label varenrLabel = new Label("Varenr:");
-                Label antallLabel = new Label("Antall:");
-                TextField fakturanr = new TextField();
-                TextField varenr = new TextField();
-                TextField antall = new TextField();
-                HBox fakturaBox = new HBox(fakturanrLabel,fakturanr);
-                HBox varenrBox = new HBox(varenrLabel, varenr);
-                HBox antallBox = new HBox(antallLabel, antall);
-                VBox fakturalinje = new VBox(fakturaBox,varenrBox, antallBox, lagre);
-                lagre.setOnAction(y -> kontroll.nyFakturalinje(fakturanr.getText(),varenr.getText(),antall.getText(),"0"));
-                lagFakturaP.setCenter(fakturalinje);
+                genererForPrivat(lagFakturaP,lagreKnapp);
             }
             ;
         });
 
         lagFakturaP.setTop(innlesningsfelt);
-        lagFakturaP.setCenter(lagFakturaLabel);
+        //lagFakturaP.setTop(lagFakturaLabel);
+
         lagFakturaP.setBottom(tilbake);
+        lagFakturaP.setRight(lagreKnapp);
+        BorderPane.setAlignment(lagreKnapp, Pos.BOTTOM_CENTER);
         BorderPane.setAlignment(tilbake, Pos.BOTTOM_RIGHT);
         lagFakturaScene = new Scene(lagFakturaP, 600, 400);
         primaryStage.setScene(lagFakturaScene);
     }
 
+    private BorderPane genererForPrivat(BorderPane lagFakturaP,Button lagreKnapp) {
+        Label fakturanrLabel = new Label("Fakturanr:");
+        Label varenrLabel = new Label("Varenr:");
+        Label antallLabel = new Label("Antall:");
+        TextField fakturanr = new TextField();
+        TextField varenr = new TextField();
+        TextField antall = new TextField();
+        HBox fakturaBox = new HBox(10, fakturanrLabel,fakturanr);
+        HBox varenrBox = new HBox(24, varenrLabel, varenr);
+        HBox antallBox = new HBox(28, antallLabel, antall);
+        fakturaBox.setAlignment(Pos.BASELINE_CENTER);
+        varenrBox.setAlignment(Pos.BASELINE_CENTER);
+        antallBox.setAlignment(Pos.BASELINE_CENTER);
+        VBox fakturalinje = new VBox(fakturaBox,varenrBox, antallBox);
+        fakturalinje.setAlignment(Pos.CENTER_LEFT);
+        lagFakturaP.setCenter(fakturalinje);
+        lagreKnapp.setOnAction(e -> {
+            kontroll.nyFakturalinje(fakturanr.getText(), varenr.getText(), antall.getText(),"0");
+            fakturanr.clear();
+            varenr.clear();
+            antall.clear();
+        });
+
+        return lagFakturaP;
+    }
+
+    private BorderPane genererForFirma(BorderPane lagFakturaP, Button lagreKnapp) {
+        Label fakturanrLabel = new Label("Fakturanr:");
+        Label varenrLabel = new Label("Varenr:");
+        Label antallLabel = new Label("Antall:");
+        Label rabatLabel = new Label("Rabatt:");
+        TextField fakturanr = new TextField();
+        TextField varenr = new TextField();
+        TextField antall = new TextField();
+        TextField rabatt = new TextField();
+        HBox fakturaBox = new HBox(10, fakturanrLabel,fakturanr);
+        HBox varenrBox = new HBox(24, varenrLabel, varenr);
+        HBox antallBox = new HBox(28, antallLabel, antall);
+        HBox rabattBox = new HBox(25, rabatLabel, rabatt);
+        fakturaBox.setAlignment(Pos.BASELINE_CENTER);
+        varenrBox.setAlignment(Pos.BASELINE_CENTER);
+        antallBox.setAlignment(Pos.BASELINE_CENTER);
+        rabattBox.setAlignment(Pos.BASELINE_CENTER);
+        VBox fakturalinje = new VBox(fakturaBox,varenrBox, antallBox, rabattBox);
+        fakturalinje.setAlignment(Pos.CENTER_LEFT);
+
+        lagFakturaP.setCenter(fakturalinje);
+        lagreKnapp.setOnAction(e -> {
+            kontroll.nyFakturalinje(fakturanr.getText(), varenr.getText(), antall.getText(),rabatt.getText());
+            fakturanr.clear();
+            varenr.clear();
+            antall.clear();
+            rabatt.clear();
+        });
+
+        return lagFakturaP;
+    }
 
 
     // Håndterer registrering av kontakt med kunde
@@ -374,12 +403,16 @@ public class HelloApplication extends Application {
         Label datoL = new Label("Dato:");
         TextField dato = new TextField();
         Label tekstL = new Label("Tekst:");
-        TextArea tekst = new TextArea();
+        TextField tekst = new TextField();
 
         HBox kundenrHB = new HBox(10, kundenrL, kundenr);
         HBox datoHB = new HBox(30, datoL, dato);
-        HBox tekstHB = new HBox(30, tekstL, tekst);
+        HBox tekstHB = new HBox(29, tekstL, tekst);
+        kundenrHB.setAlignment(Pos.BASELINE_CENTER);
+        datoHB.setAlignment(Pos.BASELINE_CENTER);
+        tekstHB.setAlignment(Pos.BASELINE_CENTER);
         kontaktVB.getChildren().addAll(kundenrHB, datoHB, tekstHB);
+        kontaktVB.setAlignment(Pos.CENTER_LEFT);
         kontaktP.setCenter(kontaktVB);
 
         lagreKnapp.setOnAction(e -> {

@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.*;
 
 //Definerer kontroll klassen
@@ -103,13 +104,17 @@ public class Kontroll {
     // Legger til nye fakturalinjer til en arrayliste med fakturalinjer
 
     public void nyFakturalinje(String fakturanr, String varenr, String antall, String rabatt) {
-
         double varepris = finnVare(varenr).getPris();
-        double totalprisUtenRabatt = varepris*Integer.parseInt(antall);
-        double rabattpris = totalprisUtenRabatt*(Double.parseDouble(rabatt)/100);
-        double totalpris = totalprisUtenRabatt-rabattpris;
-        System.out.println(totalprisUtenRabatt+"totalprisutenrabatt"+rabatt+"rabatt"+rabattpris+"rabattpris");
-        fakturalinjer.add(new Fakturalinje(fakturanr,varenr,finnVare(varenr).getVarenavn(),Integer.parseInt(antall),Double.parseDouble(rabatt),totalpris));
+        double totalprisUtenRabatt = varepris * Integer.parseInt(antall);
+        double rabattpris = totalprisUtenRabatt * (Double.parseDouble(rabatt) / 100);
+        double totalpris = totalprisUtenRabatt - rabattpris;
+
+        // Formaterer totalprisen til å ha to desimaler:
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        String formattedTotalpris = decimalFormat.format(totalpris);
+
+        fakturalinjer.add(new Fakturalinje(fakturanr, varenr, finnVare(varenr).getVarenavn(),
+                Integer.parseInt(antall), Double.parseDouble(rabatt), Double.parseDouble(formattedTotalpris)));
     }
 
     // Lagrer kunder til kundefilen.
@@ -344,10 +349,7 @@ public class Kontroll {
 
     }
 
-    public void eriktest(){
-        System.out.println("erik test start");
 
-    }
 
 
 }
